@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title>COVY SCOPE | Login</title>
+        <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    </head>
+    <body>
+        <div id="loader-overlay">
+            <div id="window-feature"></div>
+       </div>
+
+       <div id="login-container">
+            <div class="brand-top">
+                <h1 class="covy-text">COVY</h1>
+            </div>
+            <!--- Eye Following Cursor Effect -->
+            <div class="corgi-container">
+                <div class="eye-container">
+                    <div class="pupil left-eye"></div>
+                    <div class="pupil right-eye"></div>
+                </div>
+                <img src="{% static 'core/images/default-corgi.png' %}" id="corgi-eye-tracker">
+            </div>
+
+            <div class="login-box">
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <button id="login-btn">Log In</button>
+                <p id="error-msg" class="hidden">Invalid username and password</p>
+            </div>
+
+            <div class="brand-bottom">
+                <p>SCOPE <span>Build Version 0.1</span></p>
+            </div>
+       </div>
+
+       <div id="success-screen" class="hidden">
+            <div class="liquid-text-container">
+                <h1 class="covy-fill-outline">COVY</h1>
+                <div class="liquid-progress">loading 0%<div> <!-- Update this so that loading is aligned with the liquid fill up animation -->
+            </div>
+       </div>
+
+       <script src="{% static 'core/js/loader.js' %}"></script>
+    </body>
+</html>

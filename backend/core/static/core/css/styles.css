@@ -1,0 +1,122 @@
+:root {
+    --bg-color: #0d0d0d;
+    --text-color: #ffffff;
+    --accent-color: #4CAF50; /* The fizz/liquid color */
+    --error-red: #ff4d4d;
+}
+
+/* The main container for the whole app */
+#app-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: var(--bg-color);
+    font-family: 'Inter', sans-serif; /* A clean, pro font */
+    overflow: hidden;
+    color: var(--text-color);
+}
+
+body {
+    background-color: #0d0d0d;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.covy-text, .covy-fill-outline {
+    font-size: 8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    /* This creates the outline effect */
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+    margin: 0;
+}
+
+
+/* Initial Pulse Window */
+#loader-overlay {
+    width: 180px;
+    height: 240px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.05);
+}
+
+
+#window-feature {
+    width: 200px;
+    height: 300px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+/* Login Page Layout */
+#login-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 80vh;
+    width: 100%;
+    z-index: 10;
+
+}
+
+
+/* Input Styles */
+.login-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
+}
+
+input {
+    background: transparent;
+    border: 1px solid #333;
+    padding: 12px 20px;
+    border-radius: 4px;
+    color: white;
+    width: 250px;
+    transition: border 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #ffffff;
+}
+
+button {
+    background: white;
+    color: black;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.hidden { display: none; }
+
+#success-screen, .hidden {
+    display: none;
+}
