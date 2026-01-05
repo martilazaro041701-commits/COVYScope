@@ -1,122 +1,189 @@
-:root {
-    --bg-color: #0d0d0d;
-    --text-color: #ffffff;
-    --accent-color: #4CAF50; /* The fizz/liquid color */
-    --error-red: #ff4d4d;
-}
-
-/* The main container for the whole app */
-#app-wrapper {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background: var(--bg-color);
-    font-family: 'Inter', sans-serif; /* A clean, pro font */
-    overflow: hidden;
-    color: var(--text-color);
+* {
+    box-sizing: border-box;
 }
 
 body {
-    background-color: #0d0d0d;
-    color: white;
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #e8f1ff;
+    background: radial-gradient(circle at 20% 20%, #0f1c32, #050b14 50%), linear-gradient(120deg, rgba(52, 152, 219, 0.25), rgba(7, 16, 30, 0.75));
     overflow: hidden;
 }
 
-.covy-text, .covy-fill-outline {
-    font-size: 8rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    /* This creates the outline effect */
-    color: transparent;
-    -webkit-text-stroke: 2px white;
-    margin: 0;
-}
-
-
-/* Initial Pulse Window */
 #loader-overlay {
-    width: 180px;
-    height: 240px;
-    background: #111;
-    border: 1px solid #333;
-    border-radius: 8px;
-    box-shadow: 0 0 50px rgba(255, 255, 255, 0.05);
+    position: fixed;
+    inset: 0;
+    background: #050b14;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-
-#window-feature {
-    width: 200px;
-    height: 300px;
-    background: #1a1a1a;
-    border-radius: 12px;
-    border: 1px solid #333;
-}
-
-/* Login Page Layout */
-#login-container {
-    position: absolute;
+.loader-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    height: 80vh;
+    gap: 16px;
+    position: relative;
+    z-index: 10002;
+}
+
+.gear-wrapper {
+    width: 90px;
+    filter: drop-shadow(0 8px 25px rgba(52, 152, 219, 0.35));
+}
+
+#loader-gear {
     width: 100%;
-    z-index: 10;
-
+    height: auto;
+    display: block; /* Prevents tiny alignment gaps at the bottom */
 }
 
-
-/* Input Styles */
-.login-box {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 300px;
+.progress-container {
+    width: 260px;
+    height: 3px;
+    background: #0f1c32;
+    position: relative;
+    overflow: hidden;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1px rgba(52, 152, 219, 0.35);
 }
 
-input {
-    background: transparent;
-    border: 1px solid #333;
-    padding: 12px 20px;
-    border-radius: 4px;
-    color: white;
-    width: 250px;
-    transition: border 0.3s ease;
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #1dd1ff, #3478db);
+    box-shadow: 0 0 16px rgba(52, 152, 219, 0.65);
 }
 
-input:focus {
+#loader-status {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 12px;
+    color: #7db4ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    opacity: 0.85;
+}
+
+/* Reveal Elements */
+.split-line {
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    z-index: 10003;
+    top: 50%;
+    left: 0;
+    transform-origin: left center;
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.65);
+}
+
+.split-top, .split-bottom {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(180deg, #071123 0%, #050b14 100%);
+    z-index: 10001;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+}
+.split-top { top: 0; }
+.split-bottom { bottom: 0; }
+
+#login-screen {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 24px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.glass-box {
+    width: min(420px, 100%);
+    padding: 32px;
+    border-radius: 18px;
+    background: rgba(10, 19, 35, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    display: grid;
+    gap: 16px;
+}
+
+.brand-logo {
+    width: 400px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    justify-self: center;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.3));
+    margin-bottom: 6px;
+}
+
+.brand {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: #cce5ff;
+}
+
+.welcome {
+    margin: 0;
+    color: #8ea4c7;
+    font-size: 14px;
+}
+
+.login-form {
+    display: grid;
+    gap: 12px;
+}
+
+.input-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #9ab6dd;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: #e8f1ff;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-form input:focus {
     outline: none;
-    border-color: #ffffff;
+    border-color: rgba(52, 152, 219, 0.8);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
 }
 
-button {
-    background: white;
-    color: black;
+.primary-btn {
+    padding: 12px 16px;
     border: none;
-    padding: 12px;
-    border-radius: 8px;
+    border-radius: 12px;
+    background: linear-gradient(120deg, #1dd1ff, #3478db);
+    color: #041020;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     cursor: pointer;
-    font-weight: bold;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.hidden { display: none; }
+.primary-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.45);
+}
 
-#success-screen, .hidden {
-    display: none;
+.primary-btn:active {
+    transform: translateY(0);
 }
